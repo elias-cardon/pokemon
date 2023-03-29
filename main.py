@@ -12,12 +12,15 @@ def menu():
         if choix == 1:
             pokemon1, pokemon2 = choisir_pokemon()
             combat = Combat(pokemon1, pokemon2)
-            combat.lancer_combat()
+            while combat.vainqueur() is None:
+                combat.infliger_degats(pokemon1, pokemon2)
+                combat.infliger_degats(pokemon2, pokemon1)
+            print(f"Le vainqueur est {combat.vainqueur()}!")
         elif choix == 2:
+            print("Au revoir !")
             break
         else:
             print("Choix invalide. Veuillez réessayer.")
-
 
 def choisir_pokemon():
     print("Choisissez deux Pokémon pour combattre :")
@@ -29,30 +32,5 @@ def choisir_pokemon():
 
     return pokemons_premiere_generation[choix1], pokemons_premiere_generation[choix2]
 
-
-def lancer_combat():
-    print("Choisissez le Pokémon 1:")
-    pokemon1 = choisir_pokemon()
-    print("Choisissez le Pokémon 2:")
-    pokemon2 = choisir_pokemon()
-
-    if pokemon1 is not None and pokemon2 is not None:
-        combat = Combat(pokemon1, pokemon2)
-        while combat.vainqueur() is None:
-            combat.infliger_degats(pokemon1, pokemon2)
-            combat.infliger_degats(pokemon2, pokemon1)
-        print(f"Le vainqueur est {combat.vainqueur()}!")
-
-def main():
-    while True:
-        option = menu()
-        if option == 1:
-            lancer_combat()
-        elif option == 2:
-            print("Au revoir !")
-            break
-        else:
-            print("Option invalide, veuillez réessayer.")
-
 if __name__ == "__main__":
-    main()
+    menu()
