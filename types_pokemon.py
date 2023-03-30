@@ -85,9 +85,13 @@ class Roche(Pokemon):
         super().__init__(nom, niveau, attaque, defense, "Roche")
 
 class Spectre(Pokemon):
-    def __init__(self, nom, niveau, attaque, defense):
+    def __init__(self, nom, niveau, base_attaque, base_defense, iv_attaque=0, iv_defense=0, ev_attaque=0, ev_defense=0, nature_attaque=1, nature_defense=1):
+        attaque = self.calculer_statistique(base_attaque, iv_attaque, ev_attaque, nature_attaque)
+        defense = self.calculer_statistique(base_defense, iv_defense, ev_defense, nature_defense)
         super().__init__(nom, niveau, attaque, defense, "Spectre")
 
 class Dragon(Pokemon):
-    def __init__(self, nom, niveau, attaque, defense):
+    def __init__(self, nom, niveau, base_attaque, base_defense, iv_attaque=0, iv_defense=0, ev_attaque=0, ev_defense=0, nature_attaque=1, nature_defense=1):
+        attaque = self.calculer_statistique(base_attaque, iv_attaque, ev_attaque, nature_attaque)
+        defense = self.calculer_statistique(base_defense, iv_defense, ev_defense, nature_defense)
         super().__init__(nom, niveau, attaque, defense, "Dragon")
