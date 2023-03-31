@@ -24,9 +24,6 @@ green = (0, 200, 0)
 red = (200, 0 ,0)
 white = (255, 255, 255)
 
-#Base URL de l'API pokémon
-base_url = 'api/v1/pokemon/generation/1'
-
 #game loop
 game_status = 'Choisir un Pokémon'
 while game_status != 'quit':
