@@ -34,7 +34,10 @@ class Electrik(Pokemon):
     def __init__(self, nom, niveau, base_attaque, base_defense, iv_attaque=0, iv_defense=0, ev_attaque=0, ev_defense=0, nature_attaque=1, nature_defense=1):
         attaque = self.calculer_statistique(niveau, base_attaque, iv_attaque, ev_attaque, nature_attaque)
         defense = self.calculer_statistique(niveau, base_defense, iv_defense, ev_defense, nature_defense)
-        super().__init__(nom, niveau, attaque, defense, "Electrik")
+        super().__init__(nom, niveau, attaque, defense, "électrik")
+
+    def get_attaque(self):
+        return self.attaque
 
 class Glace(Pokemon):
     def __init__(self, nom, niveau, base_attaque, base_defense, iv_attaque=0, iv_defense=0, ev_attaque=0, ev_defense=0, nature_attaque=1, nature_defense=1):

@@ -34,9 +34,10 @@ class Combat:
             "Plante": {"Normal": 1, "Feu": 0.5, "Eau": 2, "Terre": 2, "Plante": 0.5, "Electrik": 1, "Glace": 1,
                        "Combat": 1, "Poison": 0.5, "Sol": 2, "Vol": 0.5, "Psy": 1, "Insecte": 0.5, "Roche": 2,
                        "Spectre": 1, "Dragon": 0.5},
-            "Electrik": {"Normal": 1, "Feu": 1, "Eau": 2, "Terre": 0, "Plante": 0.5, "Electrik": 0.5, "Glace": 1,
-                         "Combat": 1, "Poison": 1, "Sol": 0, "Vol": 2, "Psy": 1, "Insecte": 1, "Roche": 1, "Spectre": 1,
-                         "Dragon": 0.5},
+            "électrik": {
+                "normal": 1, "feu": 1, "eau": 2, "plante": 0.5, "électrik": 0.5, "glace": 1, "combat": 1, "poison": 1,
+                "sol": 0, "vol": 2, "psy": 1, "insecte": 1, "roche": 1, "spectre": 1, "dragon": 0.5
+            },
             "Glace": {"Normal": 1, "Feu": 0.5, "Eau": 0.5, "Terre": 2, "Plante": 2, "Electrik": 1, "Glace": 0.5,
                       "Combat": 1, "Poison": 1, "Sol": 2, "Vol": 2, "Psy": 1, "Insecte": 1, "Roche": 1, "Spectre": 1,
                       "Dragon": 2},
