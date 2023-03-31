@@ -1,3 +1,4 @@
+import math
 class Pokemon:
     def __init__(self, nom, niveau, attaque, defense, type_pokemon=None):
         self._nom = nom
@@ -31,8 +32,5 @@ class Pokemon:
         degats = ((((2 * niveau / 5 + 2) * puissance * attaque / defense) / 50) + 2) * multiplicateur
         return degats
 
-    def calculer_statistique(self, base, iv, ev, nature):
-        niveau = self.niveau
-        stat = (((iv + (2 * base) + (ev / 4)) * niveau) / 100) + 5
-        stat *= nature
-        return int(stat)
+    def calculer_statistique(self, niveau, base_stat, iv, ev, nature):
+        return math.floor((((base_stat * 2 + iv + math.floor(ev / 4)) * niveau) / 100 + 5) * nature)
