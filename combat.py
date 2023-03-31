@@ -57,10 +57,12 @@ class Combat:
         return multiplicateurs[type_attaquant][type_defenseur]
 
     def infliger_degats(self, attaquant, defenseur):
-        puissance = attaquant.attaque # Vous pouvez utiliser la puissance d'une attaque spécifique à la place
-        multiplicateur = self.get_multiplicateur(attaquant.type_pokemon, defenseur.type_pokemon)
-        degats = attaquant.calculer_degats(defenseur, puissance, multiplicateur)
-        defenseur.retirer_points_de_vie(degats)
+        multiplicateur = self.get_multiplicateur(attaquant, defenseur)
+        degats = attaquant.get_attaque() * multiplicateur - defenseur.get_defense()
+        degats = max(degats, 0)
+        defenseur.set_points_de_vie(defenseur.get_points_de_vie() - degats)
+        print(
+            f"{self.pokemon1.nom} inflige {degats} points de dégâts à {self.pokemon2.nom} ({multiplicateur}x multiplicateur)")
 
     def perdant(self):
         if self.est_mort(self.pokemon1):
