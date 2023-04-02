@@ -156,7 +156,7 @@ class Pokemon(pygame.sprite.Sprite):
         sprite.fill(transparency, None, pygame.BLEND_RGBA_MULT)
         game.blit(sprite, (self.x, self.y))
 
-    def draw_hp(self):
+    def draw_hp(self, game):
 
         # display the health bar
         bar_scale = 200 // self.max_hp

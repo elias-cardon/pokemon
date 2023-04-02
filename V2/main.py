@@ -303,16 +303,16 @@ while game_status != 'quit':
         alpha = 0
         while alpha < 255:
             game.fill(white)
-            rival_pokemon.draw()
-            player_pokemon.draw(alpha)
+            player_pokemon.draw(game, alpha)
+            rival_pokemon.draw(game, alpha)
             display_message(f'Go {player_pokemon.name}!')
             alpha += .4
 
             pygame.display.update()
 
         # draw the hp bars
-        player_pokemon.draw_hp()
-        rival_pokemon.draw_hp()
+        player_pokemon.draw_hp(game)
+        rival_pokemon.draw_hp(game)
 
         # determine who goes first
         if rival_pokemon.speed > player_pokemon.speed:
@@ -328,10 +328,10 @@ while game_status != 'quit':
     # display the fight and use potion buttons
     if game_status == 'player turn':
         game.fill(white)
-        player_pokemon.draw()
-        rival_pokemon.draw()
-        player_pokemon.draw_hp()
-        rival_pokemon.draw_hp()
+        player_pokemon.draw(game)
+        rival_pokemon.draw(game)
+        player_pokemon.draw_hp(game)
+        rival_pokemon.draw_hp(game)
 
         # create the fight and use potion buttons
         fight_button = create_button(240, 140, 10, 350, 130, 412, 'Fight')
@@ -346,10 +346,10 @@ while game_status != 'quit':
     if game_status == 'player move':
 
         game.fill(white)
-        player_pokemon.draw()
-        rival_pokemon.draw()
-        player_pokemon.draw_hp()
-        rival_pokemon.draw_hp()
+        player_pokemon.draw(game)
+        rival_pokemon.draw(game)
+        player_pokemon.draw_hp(game)
+        rival_pokemon.draw_hp(game)
 
         # create a button for each move
         move_buttons = []
@@ -374,10 +374,10 @@ while game_status != 'quit':
     if game_status == 'rival turn':
 
         game.fill(white)
-        player_pokemon.draw()
-        rival_pokemon.draw()
-        player_pokemon.draw_hp()
-        rival_pokemon.draw_hp()
+        player_pokemon.draw(game)
+        rival_pokemon.draw(game)
+        player_pokemon.draw_hp(game)
+        rival_pokemon.draw_hp(game)
 
         # empty the display box and pause for 2 seconds before attacking
         display_message('')
@@ -402,17 +402,17 @@ while game_status != 'quit':
         while alpha > 0:
 
             game.fill(white)
-            player_pokemon.draw_hp()
-            rival_pokemon.draw_hp()
+            player_pokemon.draw_hp(game)
+            rival_pokemon.draw_hp(game)
 
             # determine which pokemon fainted
             if rival_pokemon.current_hp == 0:
-                player_pokemon.draw()
-                rival_pokemon.draw(alpha)
+                player_pokemon.draw(game, alpha)
+                rival_pokemon.draw(game, alpha)
                 display_message(f'{rival_pokemon.name} fainted!')
             else:
                 player_pokemon.draw(alpha)
-                rival_pokemon.draw()
+                rival_pokemon.draw(game, alpha)
                 display_message(f'{player_pokemon.name} fainted!')
             alpha -= .4
 
