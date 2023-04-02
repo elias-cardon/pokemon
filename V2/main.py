@@ -46,6 +46,7 @@ MOVE_BUTTON_POS = [(10 + i % 2 * BUTTON_WIDTH, 350 + i // 2 * BUTTON_HEIGHT) for
 
 
 def display_message(message):
+    print(message)
     # draw a white box with black border
     pygame.draw.rect(game, white, (10, 350, 480, 140))
     pygame.draw.rect(game, black, (10, 350, 480, 140), 3)
@@ -129,7 +130,7 @@ def handle_player_move(mouse_click):
 
         if button.collidepoint(mouse_click):
             move = player_pokemon.moves[i]
-            player_pokemon.perform_attack(rival_pokemon, move)
+            player_pokemon.perform_attack(rival_pokemon, move, display_message)
 
             # check if the rival's pokemon fainted
             if rival_pokemon.current_hp == 0:
@@ -385,7 +386,7 @@ while game_status != 'quit':
 
         # select a random move
         move = random.choice(rival_pokemon.moves)
-        rival_pokemon.perform_attack(player_pokemon, move)
+        rival_pokemon.perform_attack(player_pokemon, move, display_message)
 
         # check if the player's pokemon fainted
         if player_pokemon.current_hp == 0:

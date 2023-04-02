@@ -56,9 +56,9 @@ class Pokemon(pygame.sprite.Sprite):
         # set the sprite to the front facing sprite
         self.set_sprite('front_default')
 
-    def perform_attack(self, other, move):
+    def perform_attack(self, other, move, display_callback):
 
-        display_message(f'{self.name} used {move.name}')
+        display_callback(f'{self.name} used {move.name}')
 
         # pause for 2 seconds
         time.sleep(2)
@@ -157,7 +157,9 @@ class Pokemon(pygame.sprite.Sprite):
         game.blit(sprite, (self.x, self.y))
 
     def draw_hp(self, game):
-
+        red = (255, 0, 0)
+        green = (0, 255, 0)
+        black = (0, 0, 0)
         # display the health bar
         bar_scale = 200 // self.max_hp
         for i in range(self.max_hp):
